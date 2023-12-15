@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mqtt_broker:
+    container_name: wildfire-mqtt
+    image: eclipse-mosquitto
+    restart: always
+    volumes:
+      - ./config:/mosquitto/config
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+    ports:
+      - "1883:1883"
+  simulated_sensor_for_wildfire:
+    container_name: simulated_sensor_for_wildfire
+    restart: always
+    build:
+      context: ./sensor_simulator
+      dockerfile: Dockerfile
+    depends_on:
+      mqtt_broker:
+        condition: service_started
