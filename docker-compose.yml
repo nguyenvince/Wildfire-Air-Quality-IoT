@@ -1,15 +1,28 @@
 version: '3'
 services:
+  influxdb:
+    restart: always
+    image: influxdb
+    container_name: wildfire-influxdb
+    volumes:
+      - ./influxdb:/var/lib/influxdb2
+    env_file:
+      - .env
+    entrypoint: [ "./entrypoint.sh" ]
+    ports:
+      - ${DOCKER_INFLUXDB_INIT_PORT}:8086
+
   mqtt_broker:
     container_name: wildfire-mqtt
     image: eclipse-mosquitto
     restart: always
     volumes:
-      - ./config:/mosquitto/config
-      - ./data:/mosquitto/data
-      - ./log:/mosquitto/log
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
     ports:
       - "1883:1883"
+
   simulated_sensor_for_wildfire:
     container_name: simulated_sensor_for_wildfire
     restart: always
@@ -19,3 +32,18 @@ services:
     depends_on:
       mqtt_broker:
         condition: service_started
+
+  node-red:
+    restart: always
+    container_name: wildfire-node-red
+    build:
+      context: ./node-red
+      dockerfile: Dockerfile
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./node-red:/data
+    env_file:
+      - .env
+    depends_on:
+      - mqtt_broker

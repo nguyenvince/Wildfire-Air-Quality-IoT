@@ -4,6 +4,7 @@ import json
 import paho.mqtt.client as mqtt
 
 # MQTT Server Parameters
+MQTT_CLIENT_ID = "simulated_python_sensor"
 MQTT_BROKER = "mqtt_broker"
 MQTT_PORT = 1883
 MQTT_TOPIC = "wildfire-air-quality"
@@ -83,6 +84,7 @@ while True:
     mappedNO2 = no2Sensor.read()
 
     message = json.dumps({
+        "sensorId": MQTT_CLIENT_ID,
         "temperature": temperature,
         "humidity": humidity,
         "dust": mappedDust,
