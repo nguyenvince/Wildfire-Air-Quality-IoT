@@ -9,6 +9,15 @@ MQTT_BROKER = "mqtt_broker"
 MQTT_PORT = 1883
 MQTT_TOPIC = "wildfire-air-quality"
 
+# Initial coordinates
+INITIAL_LAT = 42.411567
+INITIAL_LONG = 13.397309
+# Previous coordinates
+prev_lat = INITIAL_LAT
+prev_long = INITIAL_LONG
+# Max amount to move lat and long
+MOVE_AMOUNT = 0.001
+
 # Sensor measurement range constants
 MIN_PM2_5 = 0
 MAX_PM2_5 = 1000
@@ -16,6 +25,13 @@ MIN_NO2 = 0
 MAX_NO2 = 500
 MIN_CO2 = 400
 MAX_CO2 = 10000
+
+# Function to get coordinates with slight random variations
+def getCoordinates():
+    new_lat = round(random.gauss(prev_lat, MOVE_AMOUNT), 6)
+    new_long = round(random.gauss(prev_long, MOVE_AMOUNT), 6)
+
+    return new_lat, new_long
 
 # Simulate DHT22 weather sensor
 class SimulatedDHT22:
@@ -74,6 +90,9 @@ client.loop_start()
 
 # Main loop for publishing simulated sensor data
 while True:
+    # Get coordinates with slight random variations
+    lat, long = getCoordinates()
+
     # Read simulated weather (temperature and humidity)
     temperature = weatherSensor.temperature()
     humidity = weatherSensor.humidity()
@@ -85,6 +104,8 @@ while True:
 
     message = json.dumps({
         "sensorId": MQTT_CLIENT_ID,
+        "latitude": lat, 
+        "longitude": long,
         "temperature": temperature,
         "humidity": humidity,
         "dust": mappedDust,
@@ -98,6 +119,9 @@ while True:
         client.publish(MQTT_TOPIC, message)
 
         prev_weather = message
+
+    # Update previous coordinates
+    prev_lat, prev_long = lat, long
 
     # Wait for 1 second before sending the next message
     time.sleep(1)
