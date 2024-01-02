@@ -31,7 +31,12 @@
     }
   ],
   "files": [
+<<<<<<< Updated upstream
     "L0-00000001.tsl"
+=======
+    "L0-00000002.tsl",
+    "L1-00000001.tsi"
+>>>>>>> Stashed changes
   ],
   "version": 1
 }
