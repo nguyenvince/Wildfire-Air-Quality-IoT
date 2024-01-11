@@ -50,17 +50,15 @@ services:
       - mqtt_broker
 
   grafana:
-    container_name: wildfire-grafana
-    image: grafana/grafana
+    image: grafana/grafana:latest
+    container_name: grafana-dashboard
     restart: always
     ports:
       - "3000:3000"
-    environment:
-      - .env  
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - ./grafana/grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - influxdb
-
-volumes:
-  grafana-storage:
