@@ -1,1 +1,2 @@
-# Leveraging IOT To Detect Anomalies in Air Quality To Signal Wildfires
+# Wildfire Detection System
+## Leveraging IOT to monitor, analyse, visualize and disseminate information about Air Quality anomalies for detecting wildfires
