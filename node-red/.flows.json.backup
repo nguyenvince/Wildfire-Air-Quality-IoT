@@ -140,7 +140,7 @@
         "type": "influxdb out",
         "z": "a3dacb8a71bb8d43",
         "influxdb": "5d8874c9818097d1",
-        "name": "",
+        "name": "Write to InfluxDB",
         "measurement": "",
         "precision": "",
         "retentionPolicy": "",
@@ -149,7 +149,7 @@
         "retentionPolicyV18Flux": "",
         "org": "wildfire-organization",
         "bucket": "wildfire-bucket",
-        "x": 1010,
+        "x": 950,
         "y": 380,
         "wires": []
     },

@@ -175,7 +175,7 @@
         "type": "function",
         "z": "a3dacb8a71bb8d43",
         "name": "Format Data for InfluxDB",
-        "func": "// Get sensorId\nconst sensorId = msg.payload.sensorId;\n\n// Create fields object dynamically\nconst fields = Object.assign({}, msg.payload); // Copy all properties\ndelete fields.sensorId; // Remove sensorId property\n\n// Create a new message object for InfluxDB\nmsg.payload = fields;\n\nmsg.measurement = sensorId;\n\nreturn msg;\n",
+        "func": "// Get sensorId\nconst sensorId = msg.payload.sensorId;\n\n// Create fields object dynamically\nconst fields = Object.assign({}, msg.payload); // Copy all properties\n\n// Create a new message object for InfluxDB\nmsg.payload = fields;\n\nmsg.measurement = sensorId;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
