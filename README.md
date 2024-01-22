@@ -1,12 +1,12 @@
 # Wildfire Detection System
 ## Leveraging IOT to monitor, analyse, visualize and disseminate information about Air Quality anomalies for detecting wildfires
 
-Project report can be found [here, on google docs](https://docs.google.com/document/d/1phrDKMYYtAXYEQdH9UnePnNoacv5Urh0gi-Fay7SNWg/edit?usp=sharing) and [here, in this repo](./report/IOT Project Report \(Wildfire Detection And Monitoring System\).pdf). An overview of the project architecture and technologies is detailed below.
+Project report can be found [here, on google docs](https://docs.google.com/document/d/1phrDKMYYtAXYEQdH9UnePnNoacv5Urh0gi-Fay7SNWg/edit?usp=sharing) and here in this repo in the './report' directory. An overview of the project architecture and technologies is detailed below.
 
 ### System Architecture
 ![system architecture image](./report/architecture.jpg)
 
-Steps to run the project:
+### Steps to run the project
 
 1. Clone the repository
 2. ```docker compose build```
