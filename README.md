@@ -1,7 +1,10 @@
 # Wildfire Detection System
 ## Leveraging IOT to monitor, analyse, visualize and disseminate information about Air Quality anomalies for detecting wildfires
 
-Project report can be found [here](https://docs.google.com/document/d/1phrDKMYYtAXYEQdH9UnePnNoacv5Urh0gi-Fay7SNWg/edit?usp=sharing).
+Project report can be found [here](https://docs.google.com/document/d/1phrDKMYYtAXYEQdH9UnePnNoacv5Urh0gi-Fay7SNWg/edit?usp=sharing). An overview of the project architecture and technologies is detailed below.
+
+### System Architecture
+![system architecture image](./report/architecture.jpg)
 
 Steps to run the project:
 
